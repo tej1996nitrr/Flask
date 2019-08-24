@@ -5,6 +5,8 @@ from sqlalchemy import create_engine
 import pandas as pd
 import numpy as np
 
+
+
 def making_db():
     xls = pd.ExcelFile(r'F:\Jupyter\may.xlsx')
     emm = pd.read_excel(xls, 'EMM')
@@ -86,5 +88,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY']='45919d4f6d40ac95fbf5d4c200b51be3'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////database.db'
 db= SQLAlchemy(app)
+
 
 from Sqlite_App import views
