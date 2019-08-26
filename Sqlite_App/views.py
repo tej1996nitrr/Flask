@@ -16,6 +16,18 @@ def dropdown():
     month = ['may', 'june', 'july']
     return render_template('test.html', month=month)
 
+@app.route("/date",methods=['GET','POST'])
+def date():
+    if request.method=='POST':
+        d = request.form['date']
+        
+        #return "date"+str(d)
+        data = Result.query.filter(Result.Date.between('2019-05-20',d)).all()
+
+        return render_template("index.html", data=data,team="home")
+
+    return render_template('test copy.html')
+
 @app.route("/test")
 def test():
     # print("This is type ",Result.Date.between('2019-05-26 00:00:00','2019-05-31 00:00:00'))
